@@ -23,6 +23,7 @@ def parser_1365() :
         val = li.attrs['value']
         data['regist_no'] = int(val)
         res = requests.get(URL+SHOW+val)
+        data['url'] = URL+SHOW+val
         res_html = res.text
         res_soup = BeautifulSoup(res_html, 'html.parser')
         tmp = res_soup.select('#content > div.content_view > div > div.board_view.type2')[0]
@@ -53,7 +54,11 @@ def parser_1365() :
         if len(company_tmp) <= 1 :
             data['recruit_company'] = company_tmp[0].text.strip()
         else :
-            data['recruit_company'] = company_tmp[0].select('span')[0].text
+            company_tmp2 = company_tmp[0].select('span')[0].text
+            if company_tmp2[-4:] == '상세정보' :
+                data['recruit_company'] = company_tmp2[:-4]
+            else :
+                data['recruit_company'] = company_tmp2
 
         data['text'] = tmp.select('div.board_body > div.bb_txt > pre')[0].text
         data['telephone'] = tmp.select('div.board_body > div.incharge_data > dl.tel > dd')[0].text
@@ -90,5 +95,6 @@ if __name__ == '__main__' :
             telephone = data['telephone'],
             address_city = data['address_city'],
             address_gu = data['address_gu'],
-            address_remainder = data['address_remainder']
+            address_remainder = data['address_remainder'],
+            url = data['url']
         ).save()
