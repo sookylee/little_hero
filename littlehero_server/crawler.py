@@ -51,11 +51,21 @@ def parser_1365() :
         data['adult_status'] = adult_tmp
         company_tmp = tmp.select('div.board_data.type2 > div:nth-child(5) > dl:nth-child(1) > dd')
         if len(company_tmp) <= 1 :
-            data['recruit_company'] = company_tmp[0].strip()
+            data['recruit_company'] = company_tmp[0].text.strip()
         else :
             data['recruit_company'] = company_tmp[0].select('span')[0].text
 
         data['text'] = tmp.select('div.board_body > div.bb_txt > pre')[0].text
+        data['telephone'] = tmp.select('div.board_body > div.incharge_data > dl.tel > dd')[0].text
+        address_temp = tmp.select('#dataAdres')[0].text.strip().split(' ')
+        data['address_city'] = address_temp[0]
+        data['address_gu'] = address_temp[1]
+        data['address_remainder'] = ''
+        for j in range(2,len(address_temp)) :
+            data['address_remainder'] += address_temp[j]
+            if j != len(address_temp)-1 :
+                data['address_remainder'] += ' '
+
         result.append(data)
     
     return result
@@ -76,5 +86,9 @@ if __name__ == '__main__' :
             do_week = data['do_week'],
             recruit_date = data['recruit_date'],
             recruit_member = data['recruit_member'],
-            recruit_company = data['recruit_company']
+            recruit_company = data['recruit_company'],
+            telephone = data['telephone'],
+            address_city = data['address_city'],
+            address_gu = data['address_gu'],
+            address_remainder = data['address_remainder']
         ).save()

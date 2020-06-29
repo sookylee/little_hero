@@ -20,7 +20,7 @@ class Post(models.Model):
     do_week = models.CharField(default='', max_length=200)
     recruit_date = models.CharField(default='', max_length=200)
     recruit_company = models.CharField(default='', max_length=300)
-    recurit_member = models.IntegerField(default=0)
+    recruit_member = models.IntegerField(default=0)
     
 
     def publish(self):
