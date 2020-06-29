@@ -10,6 +10,7 @@
 * domain: 봉사 분야 (full text)
 * text = 공고 내용
 * do_date = 활동 기간
+* do_time = 활동 시간
 * do_week = 활동 요일
 * recruit_date = 모집 기간
 * recruit_company = 기관명
