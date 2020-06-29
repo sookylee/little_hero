@@ -1,4 +1,4 @@
-h3. 공고와 관련된 DB table(model)
+### 공고와 관련된 DB table(model)
 * author : 게시글 작성자 (= 모집 기관)
 * title : 공고 제목
 * address_city : 봉사 주소 중 '시/도'에 해당 (ex. 서울특별시, 경기도 등)
