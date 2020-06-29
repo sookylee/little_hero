@@ -14,10 +14,12 @@ class Post(models.Model):
     adult_status = models.NullBooleanField() #if null then both adult and student
     domain = models.TextField(default='')
     text = models.TextField()
-    created_date = models.DateTimeField(
-            default=timezone.now)
-    end_date = models.DateTimeField(
-            blank=True, null=True)
+    do_date = models.CharField(default='', max_length=200)
+    do_week = models.CharField(default='', max_length=200)
+    recruit_date = models.CharField(default='', max_length=200)
+    recruit_company = models.CharField(default='', max_length=300)
+    recurit_member = models.IntegerField(default=0)
+
     published_date = models.DateTimeField(
             blank=True, null=True)
     
