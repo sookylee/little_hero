@@ -51,14 +51,14 @@ def parser_1365() :
         adult_tmp = tmp.select('div.board_data.type2 > div:nth-child(4) > dl:nth-child(2) > dd')[0].text.strip()
         data['adult_status'] = adult_tmp
         company_tmp = tmp.select('div.board_data.type2 > div:nth-child(5) > dl:nth-child(1) > dd')
-        if len(company_tmp) <= 1 :
-            data['recruit_company'] = company_tmp[0].text.strip()
-        else :
+        if company_tmp[0].find('span') :
             company_tmp2 = company_tmp[0].select('span')[0].text
             if company_tmp2[-4:] == '상세정보' :
                 data['recruit_company'] = company_tmp2[:-4]
             else :
                 data['recruit_company'] = company_tmp2
+        else :
+            data['recruit_company'] = company_tmp[0].text.strip()
 
         data['text'] = tmp.select('div.board_body > div.bb_txt > pre')[0].text
         data['telephone'] = tmp.select('div.board_body > div.incharge_data > dl.tel > dd')[0].text
