@@ -20,9 +20,6 @@ class Post(models.Model):
     recruit_date = models.CharField(default='', max_length=200)
     recruit_company = models.CharField(default='', max_length=300)
     recurit_member = models.IntegerField(default=0)
-
-    published_date = models.DateTimeField(
-            blank=True, null=True)
     
 
     def publish(self):
