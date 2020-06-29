@@ -15,6 +15,7 @@ class Post(models.Model):
     domain = models.TextField(default='')
     text = models.TextField()
     do_date = models.CharField(default='', max_length=200)
+    do_time = models.CharField(default='', max_length=200)
     do_week = models.CharField(default='', max_length=200)
     recruit_date = models.CharField(default='', max_length=200)
     recruit_company = models.CharField(default='', max_length=300)
