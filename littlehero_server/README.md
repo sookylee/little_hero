@@ -6,7 +6,8 @@
 * address_gu : 봉사 주소 중 '구'에 해당 (ex. 마포구)
 * address_remainder : 시/도 와 구를 제외한 나머지 주소
 * recruit_status : 모집중인지 아닌지의 여부. Boolean type. 모집중이면 true이며 default 값은 true임.
-* adult_status: 학생/성인 여부. null 이면 둘 다 가능.
+* adult_status: 학생/성인/노인 등의 구분
+* telephone : 모집기관 전화번호
 * domain: 봉사 분야 (full text)
 * text = 공고 내용
 * do_date = 활동 기간
@@ -16,5 +17,9 @@
 * recruit_company = 기관명
 * recurit_member = 모집 인원 수
 
+### variable type
+ - regist_no : big integer
+ - recruit_satus: boolean
+ - else: String
 
 더 필요하다고 생각되는 내용이 있으면 comment 바랍니다.
