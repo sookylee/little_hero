@@ -11,7 +11,7 @@ class Post(models.Model):
     address_gu = models.CharField(max_length=100)
     address_remainder = models.CharField(max_length=200, default='')
     recruit_status = models.BooleanField(default=True)
-    adult_status = models.NullBooleanField() #if null then both adult and student
+    adult_status = models.CharField(default='', max_length=200) #if null then both adult and student
     domain = models.TextField(default='')
     text = models.TextField()
     do_date = models.CharField(default='', max_length=200)
