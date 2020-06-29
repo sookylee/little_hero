@@ -9,9 +9,11 @@
 * adult_status: 학생/성인 여부. null 이면 둘 다 가능.
 * domain: 봉사 분야 (full text)
 * text = 공고 내용
-* created_date = 모집 시작일
-* end_date = 모집 마감일 
-* published_date : 본 공고 게재 날짜(없애도 됨)
+* do_date = 활동 기간
+* do_week = 활동 요일
+* recruit_date = 모집 기간
+* recruit_company = 기관명
+* recurit_member = 모집 인원 수
 
 
 더 필요하다고 생각되는 내용이 있으면 comment 바랍니다.
