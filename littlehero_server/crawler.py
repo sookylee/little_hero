@@ -49,14 +49,32 @@ def parser_1365() :
         data['domain'] = domain
         adult_tmp = tmp.select('div.board_data.type2 > div:nth-child(4) > dl:nth-child(2) > dd')[0].text.strip()
         data['adult_status'] = adult_tmp
+        company_tmp = tmp.select('div.board_data.type2 > div:nth-child(5) > dl:nth-child(1) > dd')
+        if len(company_tmp) <= 1 :
+            data['recruit_company'] = company_tmp[0].strip()
+        else :
+            data['recruit_company'] = company_tmp[0].select('span')[0].text
+
         data['text'] = tmp.select('div.board_body > div.bb_txt > pre')[0].text
         result.append(data)
     
     return result
 
 
-
 if __name__ == '__main__' :
     datas = parser_1365()
     for data in datas :
-        Post(data).save()
+        Post(
+            regist_no = data['regist_no'],
+            title = data['title'],
+            recruit_status = data['recruit_status'],
+            adult_status = data['adult_status'],
+            domain = data['domain'],
+            text = data['text'],
+            do_date = data['do_date'],
+            do_time = data['do_time'],
+            do_week = data['do_week'],
+            recruit_date = data['recruit_date'],
+            recruit_member = data['recruit_member'],
+            recruit_company = data['recruit_company']
+        ).save()

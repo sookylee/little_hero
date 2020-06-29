@@ -13,6 +13,7 @@ class Post(models.Model):
     recruit_status = models.BooleanField(default=True)
     adult_status = models.CharField(default='', max_length=200) #if null then both adult and student
     domain = models.TextField(default='')
+    telephone = models.CharField(max_length=200, default='')
     text = models.TextField(default='')
     do_date = models.CharField(default='', max_length=200)
     do_time = models.CharField(default='', max_length=200)
