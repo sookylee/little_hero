@@ -5,6 +5,8 @@
 * address_gu : 봉사 주소 중 '구'에 해당 (ex. 마포구)
 * address_remainder : 시/도 와 구를 제외한 나머지 주소
 * recruit_status : 모집중인지 아닌지의 여부. Boolean type. 모집중이면 true이며 default 값은 true임.
+* adult_status: 학생/성인 여부. null 이면 둘 다 가능.
+* domain: 봉사 분야 (full text)
 * text = 공고 내용
 * created_date = 모집 시작일
 * end_date = 모집 마감일 
