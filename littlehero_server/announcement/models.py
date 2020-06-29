@@ -5,15 +5,15 @@ from django.utils import timezone
 
 class Post(models.Model):
     regist_no = models.BigIntegerField(default=0)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.CharField(default='', max_length=200)
     title = models.CharField(max_length=300)
-    address_city = models.CharField(max_length=100)
-    address_gu = models.CharField(max_length=100)
+    address_city = models.CharField(max_length=100, default='')
+    address_gu = models.CharField(max_length=100, default='')
     address_remainder = models.CharField(max_length=200, default='')
     recruit_status = models.BooleanField(default=True)
     adult_status = models.CharField(default='', max_length=200) #if null then both adult and student
     domain = models.TextField(default='')
-    text = models.TextField()
+    text = models.TextField(default='')
     do_date = models.CharField(default='', max_length=200)
     do_time = models.CharField(default='', max_length=200)
     do_week = models.CharField(default='', max_length=200)
