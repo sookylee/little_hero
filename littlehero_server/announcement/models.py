@@ -5,7 +5,7 @@ from django.utils import timezone
 
 class Post(models.Model):
     regist_no = models.BigIntegerField(default=0)
-    author = models.CharField(default='', max_length=200)
+    url = models.TextField(default='https://www.1365.go.kr/vols/1572247904127/partcptn/timeCptn.do', max_length=500)
     title = models.CharField(max_length=300)
     address_city = models.CharField(max_length=100, default='')
     address_gu = models.CharField(max_length=100, default='')
