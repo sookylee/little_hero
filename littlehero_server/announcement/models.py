@@ -10,6 +10,8 @@ class Post(models.Model):
     address_gu = models.CharField(max_length=100)
     address_remainder = models.CharField(max_length=200, default='')
     recruit_status = models.BooleanField(default=True)
+    adult_status = models.NullBooleanField() #if null then both adult and student
+    domain = models.TextField(default='')
     text = models.TextField()
     created_date = models.DateTimeField(
             default=timezone.now)
