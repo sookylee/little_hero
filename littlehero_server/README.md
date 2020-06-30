@@ -1,3 +1,9 @@
+## Before you use..
+ - pip install django
+ - pip install requests
+ - pip install bs4
+ 현재 local 가상환경에서 실행해 본 파일입니다.
+
 ### 공고와 관련된 DB table(model)
 * regist_no : 1365 no.
 * url : 게시글 링크
@@ -29,5 +35,6 @@
 
 ## To Do
 1. 현재까지 완성된 크롤러는 1365 홈의 1번 페이지만 긁어오도록 되어 있음. 모든 페이지를 긁어오도록 수정해야 함.
-2. 만약 DB에 동일한 regist_no 가 있으면 기존 데이터의 상태만 변경하도록 해야함. 
+2. 만약 DB에 동일한 regist_no 가 있으면 기존 데이터의 상태만 변경하도록 해야 함. 
 3. http connection을 비롯한 error handling 필요. 하나도 안되어있음..ㅎ...
+4. AWS에 환경 설치해야 함. django는 Apache 쓴다던데 그것도 더 찾아봐야 함...
