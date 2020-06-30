@@ -7,6 +7,7 @@ import django
 django.setup()
 
 from announcement.models import Post
+from _db_utils import push_data
 
 def parser_1365() :
     URL = 'https://www.1365.go.kr/vols/1572247904127/partcptn/timeCptn.do'
@@ -76,25 +77,10 @@ def parser_1365() :
     return result
 
 
+
+
+
 if __name__ == '__main__' :
     datas = parser_1365()
     for data in datas :
-        Post(
-            regist_no = data['regist_no'],
-            title = data['title'],
-            recruit_status = data['recruit_status'],
-            adult_status = data['adult_status'],
-            domain = data['domain'],
-            text = data['text'],
-            do_date = data['do_date'],
-            do_time = data['do_time'],
-            do_week = data['do_week'],
-            recruit_date = data['recruit_date'],
-            recruit_member = data['recruit_member'],
-            recruit_company = data['recruit_company'],
-            telephone = data['telephone'],
-            address_city = data['address_city'],
-            address_gu = data['address_gu'],
-            address_remainder = data['address_remainder'],
-            url = data['url']
-        ).save()
+        push_data(data)
