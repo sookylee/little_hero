@@ -3,11 +3,11 @@
 - pip install requests
 - pip install bs4
 - pip install djangorestframework
-- pip install django-filter
+- (pip install django-filter) --추후 사용 예정
 현재 local 가상환경에서 실행해 본 파일입니다.
 만약 venv 환경에서 설치 오류시 
     'python -m pip install <pkg name>'
-로 시도해 보세요.
+시도해 보세요.
 
 ### 공고와 관련된 DB table(model)
 * created_at : (레코드 저장 시) 생성 시각
@@ -19,24 +19,22 @@
 * address_gu : 봉사 주소 중 '구'에 해당 (ex. 마포구)
 * address_remainder : 시/도 와 구를 제외한 나머지 주소
 * recruit_status : 모집중인지 아닌지의 여부. Boolean type. 모집중이면 true이며 default 값은 true임.
-* adult_status: 학생/성인/노인 등의 구분
+* adult_status: 성인인지 학생인지의 여부. 성인이면 true, 학생이면 false
 * telephone : 모집기관 전화번호
 * domain: 봉사 분야 (full text)
 * text = 공고 내용
 * do_date = 활동 기간
-* do_time = 활동 시간
-* do_week = 활동 요일
-* recruit_date = 모집 기간
+* do_date_extra = 활동 요일/시간 등의 세부 정보
 * recruit_company = 기관명
 * recurit_member = 모집 인원 수
 
 ### variable type
  - regist_no : big integer
  - site_domain : integer
- - recruit_satus: boolean
+ - recruit_satus, adult_status: boolean
  - else: String
 
-더 필요하다고 생각되는 내용이 있으면 comment 바랍니다.
+더 필요하다고 생각되는 내용이 있으면 언제든 SLACK ME!.
 
 
 
