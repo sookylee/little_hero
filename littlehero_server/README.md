@@ -3,6 +3,7 @@
 - pip install requests
 - pip install bs4
 - pip install djangorestframework
+- pip install django-filter
 현재 local 가상환경에서 실행해 본 파일입니다.
 만약 venv 환경에서 설치 오류시 
     'python -m pip install <pkg name>'
