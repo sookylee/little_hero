@@ -1,9 +1,12 @@
 ## Before you use..
- - pip install django
- - pip install requests
- - pip install bs4
- - pip install djangorestframework
- 현재 local 가상환경에서 실행해 본 파일입니다.
+- pip install django
+- pip install requests
+- pip install bs4
+- pip install djangorestframework
+현재 local 가상환경에서 실행해 본 파일입니다.
+만약 venv 환경에서 설치 오류시 
+    'python -m pip install <pkg name>'
+로 시도해 보세요.
 
 ### 공고와 관련된 DB table(model)
 * regist_no : 1365 no.
