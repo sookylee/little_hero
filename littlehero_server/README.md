@@ -10,6 +10,7 @@
 로 시도해 보세요.
 
 ### 공고와 관련된 DB table(model)
+* created_at : (레코드 저장 시) 생성 시각
 * regist_no : 1365 no.
 * url : 게시글 링크
 * title : 공고 제목
