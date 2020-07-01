@@ -11,6 +11,7 @@
 
 ### 공고와 관련된 DB table(model)
 * created_at : (레코드 저장 시) 생성 시각
+* site_domain : 1365인지 vms 인지. 1365면 1, vms면 2 값을 가짐. (다른 사이트가 추가될 것을 대비..) _db_utils.py에 enum 정의되어 있음.
 * regist_no : 1365 no.
 * url : 게시글 링크
 * title : 공고 제목
@@ -31,6 +32,7 @@
 
 ### variable type
  - regist_no : big integer
+ - site_domain : integer
  - recruit_satus: boolean
  - else: String
 
