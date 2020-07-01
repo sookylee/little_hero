@@ -24,7 +24,7 @@ def parser_1365() :
         data = {}
         val = li.attrs['value']
         data['regist_no'] = int(val)
-        data['site_domain'] = domain_of_url.ILSAM65
+        data['site_domain'] = domain_of_url.ILSAM65.value
         res = requests.get(URL+SHOW+val)
         data['url'] = URL+SHOW+val
         res_html = res.text
