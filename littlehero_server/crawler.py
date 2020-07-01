@@ -8,6 +8,7 @@ django.setup()
 
 from announcement.models import Post
 from _db_utils import push_data
+from _db_utils import domain_of_url
 
 def parser_1365() :
     URL = 'https://www.1365.go.kr/vols/1572247904127/partcptn/timeCptn.do'
@@ -23,6 +24,7 @@ def parser_1365() :
         data = {}
         val = li.attrs['value']
         data['regist_no'] = int(val)
+        data['site_domain'] = domain_of_url.ILSAM65
         res = requests.get(URL+SHOW+val)
         data['url'] = URL+SHOW+val
         res_html = res.text
@@ -40,17 +42,17 @@ def parser_1365() :
         do_date = tmp.select('div.board_data.type2 > div:nth-child(1) > dl:nth-child(1) > dd')[0].text
         data['do_date'] = do_date
         do_time = tmp.select('div.board_data.type2 > div:nth-child(1) > dl:nth-child(2) > dd')[0].text
-        data['do_time'] = do_time
-        recruit_date = tmp.select('div.board_data.type2 > div:nth-child(2) > dl:nth-child(1) > dd')[0].text
-        data['recruit_date'] = recruit_date
         do_week = tmp.select('div.board_data.type2 > div:nth-child(2) > dl:nth-child(2) > dd')[0].text
-        data['do_week'] = do_week
+        data['do_date_extra'] = do_week + ' ' + do_time
         recruit_member = tmp.select('div.board_data.type2 > div:nth-child(3) > dl:nth-child(1) > dd')[0].text
         data['recruit_member'] = recruit_member
         domain = tmp.select('div.board_data.type2 > div:nth-child(4) > dl:nth-child(1) > dd')[0].text
         data['domain'] = domain
         adult_tmp = tmp.select('div.board_data.type2 > div:nth-child(4) > dl:nth-child(2) > dd')[0].text.strip()
-        data['adult_status'] = adult_tmp
+        if adult_tmp == '성인' :
+            data['adult_status'] = True
+        else :
+            data['adult_status'] = False
         company_tmp = tmp.select('div.board_data.type2 > div:nth-child(5) > dl:nth-child(1) > dd')
         if company_tmp[0].find('span') :
             company_tmp2 = company_tmp[0].select('span')[0].text
