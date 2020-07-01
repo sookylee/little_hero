@@ -12,14 +12,12 @@ class Post(models.Model):
     address_city = models.CharField(max_length=100, default='')
     address_gu = models.CharField(max_length=100, default='')
     address_remainder = models.CharField(max_length=200, default='')
-    recruit_status = models.BooleanField(default=True)
-    adult_status = models.CharField(default='', max_length=200) #if null then both adult and student
+    recruit_status = models.BooleanField(default=True) # true if recruiting now
+    adult_status = models.BooleanField(default=True) # true if adult and false if student
     domain = models.TextField(default='')
     telephone = models.CharField(max_length=200, default='')
     text = models.TextField(default='')
     do_date = models.CharField(default='', max_length=200)
-    do_time = models.CharField(default='', max_length=200)
-    do_week = models.CharField(default='', max_length=200)
     recruit_date = models.CharField(default='', max_length=200)
     recruit_company = models.CharField(default='', max_length=300)
     recruit_member = models.CharField(default='0 명 / 일', max_length=200)
