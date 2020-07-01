@@ -2,6 +2,7 @@
  - pip install django
  - pip install requests
  - pip install bs4
+ - pip install djangorestframework
  현재 local 가상환경에서 실행해 본 파일입니다.
 
 ### 공고와 관련된 DB table(model)
