@@ -10,13 +10,17 @@ class domain_of_url(Enum) :
 
 # data type must be dictionary
 def push_data(data) : 
-    temp = Post.objects.get(regist_no = data['regist_no'])
-    ## update
-    if temp and temp.recruit_status != data['recruit_status'] :
-        temp.recruit_status = data['recruit_status']
-        print(data +' has updated.')
+    try :
+        temp = Post.objects.get(
+            site_domain=domain_of_url.ILSAM65.value,
+            regist_no=data['regist_no']
+            )
+        ## update
+        if temp and temp.recruit_status != data['recruit_status'] :
+            temp.recruit_status = data['recruit_status']
+            print(str(data['regist_no']) +' has updated.')
     ## push
-    else : 
+    except : 
         Post(
                 site_domain=data['site_domain'],
                 regist_no=data['regist_no'],
@@ -35,5 +39,5 @@ def push_data(data) :
                 address_remainder=data['address_remainder'],
                 url=data['url']
             ).save()
-        print(data +' has pushed.')
+        print(str(data['regist_no']) +' has pushed.')
 
