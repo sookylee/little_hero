@@ -1,4 +1,11 @@
 from announcement.models import Post
+from enum import Enum
+
+
+#enum for site domain
+class domain_of_url(Enum) :
+    ILSAM65 = 1
+    VMS = 2
 
 
 # data type must be dictionary
