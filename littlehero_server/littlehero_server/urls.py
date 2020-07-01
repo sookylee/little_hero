@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework import routers
+from announcement.views import PostViewAll
+from django.conf.urls import url, include
+
+
+router = routers.DefaultRouter()
+router.register('posts', PostViewAll)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^', include(router.urls)), #prefix로 'posts' 이용. 
 ]
