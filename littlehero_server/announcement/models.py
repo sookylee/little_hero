@@ -18,7 +18,7 @@ class Post(models.Model):
     telephone = models.CharField(max_length=200, default='')
     text = models.TextField(default='')
     do_date = models.CharField(default='', max_length=200)
-    recruit_date = models.CharField(default='', max_length=200)
+    do_date_extra = models.CharField(default='', max_length=200)
     recruit_company = models.CharField(default='', max_length=300)
     recruit_member = models.CharField(default='0 명 / 일', max_length=200)
     
