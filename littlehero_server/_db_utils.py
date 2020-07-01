@@ -18,6 +18,7 @@ def push_data(data) :
         ## update
         if temp.recruit_status != data['recruit_status'] :
             temp.recruit_status = data['recruit_status']
+            temp.save()
             print('1365 ' + str(data['regist_no']) +' has updated.')
     ## push
     except : 
