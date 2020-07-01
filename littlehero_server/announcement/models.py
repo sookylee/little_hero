@@ -5,6 +5,7 @@ from django.utils import timezone
 
 class Post(models.Model):
     created_at = models.DateTimeField(auto_now=True)
+    site_domain = models.IntegerField(default=1) # 1: 1365, 2: vms look _db_utils.py
     regist_no = models.BigIntegerField(default=0)
     url = models.TextField(default='https://www.1365.go.kr/vols/1572247904127/partcptn/timeCptn.do', max_length=500)
     title = models.CharField(max_length=300)
