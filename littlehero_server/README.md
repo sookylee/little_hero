@@ -1,12 +1,14 @@
+현재 local 가상환경에서 실행해 본 파일입니다.<br>
 ## Before you use..
 - pip install django
 - pip install requests
 - pip install bs4
 - pip install djangorestframework
 - (pip install django-filter) --추후 사용 예정
-현재 local 가상환경에서 실행해 본 파일입니다.
-만약 venv 환경에서 설치 오류시 
-    'python -m pip install <pkg name>'
+
+
+만약 venv 환경에서 설치 오류시 <br>
+    *'python -m pip install \<pkg name>'* <br>
 시도해 보세요.
 
 ### 공고와 관련된 DB table(model)
@@ -34,7 +36,7 @@
  - recruit_satus, adult_status: boolean
  - else: String
 
-더 필요하다고 생각되는 내용이 있으면 언제든 SLACK ME!.
+<br>더 필요하다고 생각되는 내용이 있으면 언제든 SLACK ME!.
 
 
 
