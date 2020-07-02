@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
 import os
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "littlehero_server.settings")
@@ -14,8 +16,17 @@ def parser_1365() :
     URL = 'https://www.1365.go.kr/vols/1572247904127/partcptn/timeCptn.do'
     SHOW = '?type=show&progrmRegistNo='
 
-    req = requests.get(URL)
-    html = req.text
+    #for headless
+    options = webdriver.ChromeOptions()
+    options.add_argument('headless')
+    options.add_argument('window-size=1920x1080')
+    options.add_argument('disable-gpu')
+
+    driver = webdriver.Chrome('./chromedriver', chrome_options=options)
+    driver.get(URL)
+    driver.implicitly_wait(3)
+
+    html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
     temp = soup.select('#content > div.content_view > div.board_list.board_list2.non_sub > ul > li > input')
 
