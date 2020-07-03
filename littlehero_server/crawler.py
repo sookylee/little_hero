@@ -1,7 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait, Select
+from selenium.webdriver.support import expected_conditions as EC
 import os
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "littlehero_server.settings")
@@ -11,6 +12,7 @@ django.setup()
 from announcement.models import Post
 from _db_utils import push_data
 from _db_utils import domain_of_url
+
 
 def parser_1365() :
     URL = 'https://www.1365.go.kr/vols/1572247904127/partcptn/timeCptn.do'
@@ -25,12 +27,41 @@ def parser_1365() :
     driver = webdriver.Chrome('./chromedriver', chrome_options=options)
     driver.get(URL)
     driver.implicitly_wait(3)
+    select = Select(driver.find_element_by_xpath('//*[@id="searchSrvcStts"]'))
+    select.select_by_value("전체")
+    driver.find_element_by_xpath('//*[@id="btnSearchMobile"]').click()
+    ## explicit wait for loading
+    ele = WebDriverWait(driver, 30).until(EC.element_to_be_selected(driver.find_element_by_xpath('//*[@id="searchSrvcStts"]/option[1]')))
 
+
+    ## get datas
+    while True :
+        page_temp = driver.find_elements_by_xpath('//*[@id="content"]/div[2]/div[5]/div/div/div/*')
+        pageNum = len(page_temp)-4
+        for ind in range(2,pageNum+2) :
+            _get_datas(driver, URL, SHOW)
+            
+            ## go to next page
+            page_temp[ind+1].click()
+            ele = WebDriverWait(driver, 30).until(EC.element_to_be_clickable(page_temp[ind]))
+
+        ## if it's last of all data page
+        if page_temp[ind+1].get_attribute['href'].split('=')[1] == page_temp[ind].text :
+            break
+    return
+
+
+
+
+
+
+
+def _get_datas(driver, URL, SHOW) :
     html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
     temp = soup.select('#content > div.content_view > div.board_list.board_list2.non_sub > ul > li > input')
 
-    result = []
+    ### 순서 바꿔서 소요되는 시간을 줄여야 함.. 나중에 할 것!
     for li in temp :
         data = {}
         val = li.attrs['value']
@@ -85,15 +116,13 @@ def parser_1365() :
             if j != len(address_temp)-1 :
                 data['address_remainder'] += ' '
 
-        result.append(data)
+        push_data(data)
+    return
     
-    return result
 
 
 
 
 
 if __name__ == '__main__' :
-    datas = parser_1365()
-    for data in datas :
-        push_data(data)
+    parser_1365()
