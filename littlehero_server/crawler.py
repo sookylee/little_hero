@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+import time
 import os
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "littlehero_server.settings")
@@ -75,7 +76,16 @@ def _get_datas(driver, URL, SHOW) :
         val = li.attrs['value']
         data['regist_no'] = int(val)
         data['site_domain'] = domain_of_url.ILSAM65.value
-        res = requests.get(URL+SHOW+val)
+
+        ## prevent error of server connection error
+        while True :
+            try :
+                res = requests.get(URL+SHOW+val)
+                break
+            except :
+                time.sleep(5)
+                continue
+            
         data['url'] = URL+SHOW+val
         res_html = res.text
         res_soup = BeautifulSoup(res_html, 'html.parser')
