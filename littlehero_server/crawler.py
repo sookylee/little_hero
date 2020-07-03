@@ -29,7 +29,7 @@ def parser_1365() :
     driver.implicitly_wait(3)
     select = Select(driver.find_element_by_xpath('//*[@id="searchSrvcStts"]'))
     select.select_by_value("3")
-    driver.find_element_by_xpath('//*[@id="btnSearchMobile"]').click()
+    driver.find_element_by_xpath('//*[@id="btnSearch"]').click()
     ## explicit wait for loading
     ele = WebDriverWait(driver, 30).until(EC.element_to_be_selected(driver.find_element_by_xpath('//*[@id="searchSrvcStts"]/option[1]')))
 
@@ -51,7 +51,7 @@ def parser_1365() :
             break
     
     driver.quit()
-    
+
     return
 
 
