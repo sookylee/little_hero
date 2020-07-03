@@ -28,7 +28,7 @@ def parser_1365() :
     driver.get(URL)
     driver.implicitly_wait(3)
     select = Select(driver.find_element_by_xpath('//*[@id="searchSrvcStts"]'))
-    select.select_by_value("전체")
+    select.select_by_value("3")
     driver.find_element_by_xpath('//*[@id="btnSearchMobile"]').click()
     ## explicit wait for loading
     ele = WebDriverWait(driver, 30).until(EC.element_to_be_selected(driver.find_element_by_xpath('//*[@id="searchSrvcStts"]/option[1]')))
@@ -39,6 +39,7 @@ def parser_1365() :
         page_temp = driver.find_elements_by_xpath('//*[@id="content"]/div[2]/div[5]/div/div/div/*')
         pageNum = len(page_temp)-4
         for ind in range(2,pageNum+2) :
+            print(str(ind))
             _get_datas(driver, URL, SHOW)
             
             ## go to next page
@@ -48,6 +49,9 @@ def parser_1365() :
         ## if it's last of all data page
         if page_temp[ind+1].get_attribute['href'].split('=')[1] == page_temp[ind].text :
             break
+    
+    driver.quit()
+    
     return
 
 
