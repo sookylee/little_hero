@@ -8,11 +8,12 @@ class domain_of_url(Enum) :
     VMS = 2
 
 
-# data type must be dictionary
-def push_data(data) : 
+# data type must be dictionary.
+# dom = site_domain
+def push_data(data, dom) : 
     try :
         temp = Post.objects.get(
-            site_domain=domain_of_url.ILSAM65.value,
+            site_domain=dom,
             regist_no=data['regist_no']
             )
         ## update
