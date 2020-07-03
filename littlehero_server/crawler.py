@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 import os
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "littlehero_server.settings")
@@ -33,21 +34,24 @@ def parser_1365() :
     ## explicit wait for loading
     ele = WebDriverWait(driver, 30).until(EC.element_to_be_selected(driver.find_element_by_xpath('//*[@id="searchSrvcStts"]/option[1]')))
 
-
+    xpath_for_page_button = '//*[@id="content"]/div[2]/div[5]/div/div/div/a['
     ## get datas
     while True :
         page_temp = driver.find_elements_by_xpath('//*[@id="content"]/div[2]/div[5]/div/div/div/*')
         pageNum = len(page_temp)-4
         for ind in range(2,pageNum+2) :
-            print(str(ind))
+            #print(str(ind))
             _get_datas(driver, URL, SHOW)
             
             ## go to next page
+            page_temp = driver.find_elements_by_xpath('//*[@id="content"]/div[2]/div[5]/div/div/div/*')
             page_temp[ind+1].click()
-            ele = WebDriverWait(driver, 30).until(EC.element_to_be_clickable(page_temp[ind]))
+            ele = WebDriverWait(driver, 30).until(
+                EC.element_to_be_clickable((By.XPATH, xpath_for_page_button + str(ind+1)+']')))
 
         ## if it's last of all data page
-        if page_temp[ind+1].get_attribute['href'].split('=')[1] == page_temp[ind].text :
+        page_temp = driver.find_elements_by_xpath('//*[@id="content"]/div[2]/div[5]/div/div/div/*')
+        if page_temp[ind+1].get_attribute('href').split('=')[1] == page_temp[ind].text :
             break
     
     driver.quit()
@@ -79,6 +83,7 @@ def _get_datas(driver, URL, SHOW) :
         
         title = tmp.select('h3 > input[type=hidden]')[0].attrs['value']
         data['title'] = title
+        #print(title)
         tmpStatus = tmp.select('h3 > em')[0].text
         if tmpStatus == '(모집중)' :
             recruit_status = True
@@ -109,21 +114,23 @@ def _get_datas(driver, URL, SHOW) :
         else :
             data['recruit_company'] = company_tmp[0].text.strip()
 
-        data['text'] = tmp.select('div.board_body > div.bb_txt > pre')[0].text
+        data['text'] = tmp.select('div.board_body > div.bb_txt')[0].text
         data['telephone'] = tmp.select('div.board_body > div.incharge_data > dl.tel > dd')[0].text
         address_temp = tmp.select('#dataAdres')[0].text.strip().split(' ')
         data['address_city'] = address_temp[0]
-        data['address_gu'] = address_temp[1]
-        data['address_remainder'] = ''
-        for j in range(2,len(address_temp)) :
-            data['address_remainder'] += address_temp[j]
-            if j != len(address_temp)-1 :
-                data['address_remainder'] += ' '
+        if len(address_temp)== 1 :
+            data['address_gu'] = ''
+            data['address_remainder'] = ''
+        else :
+            data['address_gu'] = address_temp[1]
+            data['address_remainder'] = ''
+            for j in range(2,len(address_temp)) :
+                data['address_remainder'] += address_temp[j]
+                if j != len(address_temp)-1 :
+                    data['address_remainder'] += ' '
 
         push_data(data)
     return
-    
-
 
 
 
