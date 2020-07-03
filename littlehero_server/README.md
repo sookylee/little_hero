@@ -8,7 +8,9 @@
 
 
 만약 venv 환경에서 설치 오류시 <br>
-    *'python -m pip install \<pkg name>'* <br>
+```
+    'python -m pip install <pkg name>'
+```
 시도해 보세요.
 
 ### 공고와 관련된 DB table(model)
@@ -30,7 +32,7 @@
 * **recruit_company** = 기관명
 * **recurit_member** = 모집 인원 수
 
-### variable type
+## variable type
  - regist_no : big integer
  - site_domain : integer
  - recruit_satus, adult_status: boolean
@@ -40,8 +42,8 @@
 
 
 
-
+<hr/>
 ## To Do
-1. (해결!) 현재까지 완성된 크롤러는 1365 홈의 1번 페이지만 긁어오도록 되어 있음. 모든 페이지를 긁어오도록 수정해야 함.
-2. (해결!!) http connection을 비롯한 error handling 필요. 하나도 안되어있음..ㅎ...
+1. (해결!) ~~현재까지 완성된 크롤러는 1365 홈의 1번 페이지만 긁어오도록 되어 있음. 모든 페이지를 긁어오도록 수정해야 함.~~
+2. (해결!!) ~~http connection을 비롯한 error handling 필요. 하나도 안되어있음..ㅎ...~~
 3. AWS에 환경 설치해야 함. django는 Apache 쓴다던데 그것도 더 찾아봐야 함...
