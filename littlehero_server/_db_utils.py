@@ -9,11 +9,10 @@ class domain_of_url(Enum) :
 
 
 # data type must be dictionary.
-# dom = site_domain
-def push_data(data, dom) : 
+def push_data(data) : 
     try :
         temp = Post.objects.get(
-            site_domain=dom,
+            site_domain=data['site_domain'],
             regist_no=data['regist_no']
             )
         ## update
