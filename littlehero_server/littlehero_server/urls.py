@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
-from announcement.views import PostViewAll
+from announcement.views import *
 from django.conf.urls import url, include
 from rest_framework_swagger.views import get_swagger_view
 
@@ -28,5 +28,8 @@ router.register('posts', PostViewAll)
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api/doc', get_swagger_view(title='Rest API Document')),
-    url(r'^', include(router.urls)), #prefix로 'posts' 이용. 
+    url(r'^', include(router.urls)),
+    url(r'^api/posts/detail', PostViewDetail.as_view()),
 ]
+
+#url(r'^api/detail', include(router.urls)),
