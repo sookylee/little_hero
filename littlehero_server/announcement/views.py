@@ -16,14 +16,9 @@ class PostViewDetail(generics.ListAPIView) :
     filter_class = PostDetailFilter
 
 
-# default view of notice board
-class PostViewAll(viewsets.ModelViewSet) :
-    queryset = Post.objects.all().order_by('-created_at')
-    serializer_class = PostSerializer
-
 
 # query handling of notice board
-class PostSearchView(generics.ListAPIView) :
+class PostView(generics.ListAPIView) :
     queryset = Post.objects.all().order_by('-created_at')
     serializer_class = PostSerializer
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)

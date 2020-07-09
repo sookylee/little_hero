@@ -22,15 +22,10 @@ from rest_framework_swagger.views import get_swagger_view
 
 
 router = routers.DefaultRouter()
-router.register('posts', PostViewAll)
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^api/doc', get_swagger_view(title='Rest API Document')),
-    url(r'^', include(router.urls)),
-    url(r'^api/posts/search', PostSearchView.as_view()),
+    url(r'^', get_swagger_view(title='Rest API Document')),
+    url(r'^api/posts', PostSearchView.as_view()),
     url(r'^api/posts/detail', PostViewDetail.as_view()),
 ]
-
-#url(r'^api/detail', include(router.urls)),
