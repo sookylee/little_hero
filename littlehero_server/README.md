@@ -40,9 +40,10 @@ packages/rest_framework_swagger/templates/rest_framework_swagger/index.html
 * **recruit_status** : 모집중인지 아닌지의 여부. Boolean type. 모집중이면 true이며 default 값은 true임.
 * **adult_status**: 성인인지 학생인지의 여부. 성인이면 true, 학생이면 false
 * **telephone** : 모집기관 전화번호
-* **domain**: 봉사 분야 (full text)
+* **domain**: 봉사 분야
 * **text** = 공고 내용
-* **do_date** = 활동 기간
+* **start_date** = 활동 시작일. yyyy-mm-dd 형태.
+* **end_date** = 활동 종료일. yyyy-mm-dd 형태.
 * **do_date_extra** = 활동 요일/시간 등의 세부 정보
 * **recruit_company** = 기관명
 * **recurit_member** = 모집 인원 수
@@ -51,6 +52,7 @@ packages/rest_framework_swagger/templates/rest_framework_swagger/index.html
  - regist_no : big integer
  - site_domain : integer
  - recruit_satus, adult_status: boolean
+ - start_date, end_date : date. yyyy-mm-dd.
  - else: String
 
 <br>더 필요하다고 생각되는 내용이 있으면 언제든 SLACK ME!.
