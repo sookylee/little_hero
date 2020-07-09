@@ -9,3 +9,20 @@ class PostDetailFilter(fils.FilterSet) :
     class Meta :
         model = Post
         fields = ['registNo', 'siteDomain']
+
+
+class PostFilter(fils.FilterSet) :
+    addressCity = fils.CharFilter(field_name='address_city')
+    addressGu = fils.CharFilter(field_name='address_gu')
+    recruitStatus = fils.BooleanFilter(field_name='recruit_status')
+    adultStatus = fils.BooleanFilter(field_name='adult_status')
+
+    class Meta :
+        model = Post
+        fields = [
+            'addressCity',
+            'addressGu',
+            'recruitStatus',
+            'adultStatus',
+        ]
+    
