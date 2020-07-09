@@ -18,6 +18,7 @@ class PostSerializer(serializers.ModelSerializer):
             'address_gu',
             'recruit_status',
             'adult_status',
-            'do_date',
+            'start_date',
+            'end_date',
             'domain',
         )
