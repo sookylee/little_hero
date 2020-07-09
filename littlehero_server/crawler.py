@@ -104,8 +104,8 @@ def _get_datas(driver, URL, SHOW) :
             recruit_status = False
         data['recruit_status'] = recruit_status
         do_date = tmp.select('div.board_data.type2 > div:nth-child(1) > dl:nth-child(1) > dd')[0].text.split('~')
-        data['start_date'] = timezone.make_aware(datetime.strptime(do_date[0][:-1], '%Y-%m-%d'))
-        data['end_date'] = timezone.make_aware(datetime.strptime(do_date[1][:-1], '%Y-%m-%d'))
+        data['start_date'] = timezone.make_aware(datetime.strptime(do_date[0][:-1], '%Y.%m.%d'))
+        data['end_date'] = timezone.make_aware(datetime.strptime(do_date[1][1:], '%Y.%m.%d'))
         do_time = tmp.select('div.board_data.type2 > div:nth-child(1) > dl:nth-child(2) > dd')[0].text
         do_week = tmp.select('div.board_data.type2 > div:nth-child(2) > dl:nth-child(2) > dd')[0].text
         data['do_date_extra'] = do_week + ' ' + do_time
