@@ -4,6 +4,7 @@
 - pip install requests
 - pip install bs4
 - pip install djangorestframework
+- pip install rest-framework-swagger
 - (pip install django-filter) --추후 사용 예정
 
 

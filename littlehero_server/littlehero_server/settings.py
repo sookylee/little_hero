@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'announcement',
     'rest_framework',
     'django_filters',
+    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
