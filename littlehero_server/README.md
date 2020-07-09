@@ -1,4 +1,6 @@
 현재 local 가상환경에서 실행해 본 파일입니다.<br>
+++api 쿼리로 호출하실때에는 db column이름을 snake_case 에서 camelCase로 바꿔주세요!++<br>
+
 ## Before you use..
 - pip install django
 - pip install requests
