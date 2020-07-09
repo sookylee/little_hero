@@ -18,6 +18,7 @@ from django.urls import path
 from rest_framework import routers
 from announcement.views import PostViewAll
 from django.conf.urls import url, include
+from rest_framework_swagger.views import get_swagger_view
 
 
 router = routers.DefaultRouter()
@@ -26,5 +27,6 @@ router.register('posts', PostViewAll)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^api/doc', get_swagger_view(title='Rest API Document')),
     url(r'^', include(router.urls)), #prefix로 'posts' 이용. 
 ]
