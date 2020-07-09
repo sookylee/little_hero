@@ -19,7 +19,8 @@ class PostFilter(fils.FilterSet) :
 
     startDate = fils.DateFilter(field_name='start_date', lookup_expr=('gte')) #greater or equal
     endDate = fils.DateFilter(field_name='end_date', lookup_expr=('lte')) #less of equal
-
+    
+    
     class Meta :
         model = Post
         fields = [
