@@ -19,14 +19,14 @@
 
 2. 
 api/docs 에서 문제가 발생하면,
-'''
+```
 packages/rest_framework_swagger/templates/rest_framework_swagger/index.html
-'''
+```
 에 들어가서, 두번째 줄의 
-'''
+```
 {% load staticfiles %} 를
 {% load static %} 로 바꾸세요.
-'''
+```
 
 ## 공고와 관련된 DB table(model)
 * **created_at** : (레코드 저장 시) 생성 시각. 자동으로 값 들어감.
