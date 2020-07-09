@@ -26,6 +26,6 @@ router = routers.DefaultRouter()
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', get_swagger_view(title='Rest API Document')),
-    url(r'^api/posts', PostSearchView.as_view()),
+    url(r'^api/posts', PostView.as_view()),
     url(r'^api/posts/detail', PostViewDetail.as_view()),
 ]
