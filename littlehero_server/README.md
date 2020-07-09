@@ -52,7 +52,7 @@ packages/rest_framework_swagger/templates/rest_framework_swagger/index.html
  - regist_no : big integer
  - site_domain : integer
  - recruit_satus, adult_status: boolean
- - start_date, end_date : date. yyyy-mm-dd.
+ - start_date, end_date : django datefield. yyyy-mm-dd.
  - else: String
 
 <br>더 필요하다고 생각되는 내용이 있으면 언제든 SLACK ME!.
