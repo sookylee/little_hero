@@ -7,7 +7,7 @@
 - pip install bs4
 - pip install djangorestframework
 - pip install rest-framework-swagger
-- (pip install django-filter) --추후 사용 예정
+- pip install django-filter
 
 ### error 발생 시!
 1. 
